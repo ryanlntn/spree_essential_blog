@@ -1,1 +1,2 @@
 rake "db:migrate db:seed db:sample:blog", :env => "development"
+rake "spree_auth:admin:create"
