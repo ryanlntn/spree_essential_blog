@@ -10,6 +10,7 @@ class Spree::Blogs::Admin::PostCategoryIntegrationTest < SpreeEssentials::Integr
     Spree::PostCategory.destroy_all
     @post = Factory.create(:spree_post)
     @category = Factory.create(:spree_post_category)
+    stub_authorization!
   end
   
   should "have a link to post categories" do

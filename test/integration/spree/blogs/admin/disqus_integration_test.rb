@@ -4,6 +4,9 @@
 require 'test_helper'
 
 class Spree::Blogs::Admin::DisqusIntegrationTest < SpreeEssentials::IntegrationCase
+  setup do
+    stub_authorization!
+  end
 
   should "have a link to disqus config" do
     visit spree.admin_configurations_path

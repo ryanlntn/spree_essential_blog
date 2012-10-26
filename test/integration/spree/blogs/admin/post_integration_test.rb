@@ -9,6 +9,7 @@ class Spree::Blogs::Admin::PostIntegrationTest < SpreeEssentials::IntegrationCas
     Spree::Post.destroy_all
     @labels = %(Title, Posted At, Body, Tags).split(', ')
     @values = %(Just a post, #{Time.now}, #{Faker::Lorem.paragraphs(1 + rand(4)).join("\n\n")}, one tag).split(', ')
+    stub_authorization!
   end
   
   should "have a link to new post" do

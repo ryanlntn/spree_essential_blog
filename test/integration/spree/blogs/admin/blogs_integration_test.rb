@@ -7,11 +7,13 @@ class Spree::Blogs::Admin::BlogsIntegrationTest < SpreeEssentials::IntegrationCa
 
   setup do
     Spree::Blog.destroy_all
+    stub_authorization!
   end
   
   context "create a blog" do
     
     should "validate blog" do
+      puts "PATH:#{spree.new_admin_blog_path}"
       visit spree.new_admin_blog_path
       click_button "Create"
       within "#errorExplanation" do
@@ -65,9 +67,9 @@ class Spree::Blogs::Admin::BlogsIntegrationTest < SpreeEssentials::IntegrationCa
     should "get destroyed" do
       visit spree.admin_blogs_path
       within "tr#blog_#{@blog.id}" do
-        find("a[href='#']").click
+        find("a.delete-resource").click
       end      
-      assert find_by_id("popup_ok").click
+      assert page.driver.browser.switch_to.alert.accept
     end
     
   end

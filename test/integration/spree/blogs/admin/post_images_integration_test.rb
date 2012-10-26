@@ -5,6 +5,7 @@ class Spree::Admin::PostImagesIntegrationTest < SpreeEssentials::IntegrationCase
   setup do
     Spree::PostImage.destroy_all
     @post = Spree::Post.first || Factory.create(:spree_post)
+    stub_authorization!
   end
   
   should "have a link to new post image" do
@@ -64,9 +65,9 @@ class Spree::Admin::PostImagesIntegrationTest < SpreeEssentials::IntegrationCase
     should "get destroyed" do
       visit spree.admin_post_images_path(@post)
       within "table.index" do
-        find("a[href='#']").click
+        find("a.delete-resource").click
       end
-      assert find_by_id("popup_ok").click
+      assert page.driver.browser.switch_to.alert.accept
     end
     
   end

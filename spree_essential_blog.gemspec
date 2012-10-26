@@ -26,6 +26,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency('factory_girl', '~> 2.6.0')
   s.add_development_dependency('capybara',     '~> 1.1.2')
   s.add_development_dependency('sqlite3',      '~> 1.3.5')
+  s.add_development_dependency 'm'
+  s.add_development_dependency('mocha',        '~> 0.12.7')
+  s.add_development_dependency('sass-rails',   '~> 3.2.5')
+  s.add_development_dependency('jquery-rails', '~> 2.1.3')
   # s.add_development_dependency('simplecov',    '~> 0.6.1')
   # s.add_development_dependency('turn',         '~> 0.9.3')
 
